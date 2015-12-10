@@ -42,8 +42,9 @@ app.get('/directions', function (req, res) {
           directions.duration = firstLeg.duration;
           directions.start = firstLeg.start_location;
           directions.end = firstLeg.end_location;
-
-
+          directions.end_address = firstLeg.end_address;
+          directions.start_address = firstLeg.start_address;
+          
           var googleSteps = firstLeg.steps;
 
           for (var i in googleSteps) {
@@ -102,7 +103,8 @@ app.get('/directions', function (req, res) {
               finalDirections.start = directions.start;
               finalDirections.end = directions.end;
               finalDirections.steps = directions.steps;
-              
+              finalDirections.end_address = directions.end_address
+              finalDirections.start_address =  directions.start_address
               res.status(200).json(finalDirections);
               return;
             }
